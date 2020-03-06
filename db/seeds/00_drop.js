@@ -1,21 +1,12 @@
 exports.seed = function (knex, Promise) {
-  return knex('locations').del()
-    .then(() => {
       return knex('users').del()
+    .then(() => {
+      return knex('nouns').del()
     })
     .then(() => {
-      return knex('tutors').del()
+      return knex('verbs').del()
     })
     .then(() => {
-      return knex('technologies').del()
-    })
-    .then(() => {
-      return knex('tutors_locations').del()
-    })
-    .then(() => {
-      return knex('tutors_technologies').del()
-    })
-    .then(() => {
-      return knex('reviews').del()
+      return knex('descriptors').del()
     })
 }
