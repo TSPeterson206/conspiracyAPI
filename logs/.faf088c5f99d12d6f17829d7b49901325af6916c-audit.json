@@ -1,0 +1,19 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 3
+    },
+    "auditLog": "logs/.faf088c5f99d12d6f17829d7b49901325af6916c-audit.json",
+    "files": [
+        {
+            "date": 1572154789449,
+            "name": "logs/application-Saturday, October 26th 2019, 10:39:49 pm.log",
+            "hash": "ed8dbaa6bc1c650aa53d43bea754ddf4"
+        },
+        {
+            "date": 1572154911696,
+            "name": "logs/application-Saturday, October 26th 2019, 10:41:51 pm.log",
+            "hash": "bb1fa1d834fe1ca7ebef260402afcdd3"
+        }
+    ]
+}
