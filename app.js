@@ -12,11 +12,9 @@ app.use(morgan('dev'))
 app.use(bodyParser.json({ limit: '5mb' }))
 
 app.use('/users', require('./routes/users'))
-app.use('/auth', require('./routes/auth'))
-app.use('/tutors', require('./routes/tutors'))
-app.use('/technologies', require('./routes/technologies'))
-app.use('/locations', require('./routes/locations'))
-app.use('/reviews', require('./routes/reviews'))
+app.use('/nouns', require('./routes/nouns'))
+app.use('/verbs', require('./routes/verbs'))
+app.use('/descriptors', require('./routes/descriptors'))
 
 
 app.use((req, res, next) => {
@@ -38,33 +36,33 @@ const listener = () => console.log(`Listening on ${port}`)
 app.listen(port, listener)
 
 
-const winston = require('winston');
-require('winston-daily-rotate-file')
+// const winston = require('winston');
+// require('winston-daily-rotate-file')
 
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.json(),
-  defaultMeta: { service: 'user-service' },
-  handleExceptions: true,
-  transports: [
-    //
-    // - Write to all logs with level `info` and below to `combined.log` 
-    // - Write all logs error (and below) to `error.log`.
-    //
-    new winston.transports.File({ filename: './logs/error.log', level: 'error' }),
-    new winston.transports.File({ filename: './logs/combined.log' }),
-    new winston.transports.Console(),
-    new winston.transports.DailyRotateFile({
-      dirname:'./logs',
-      frequency:'1m',
-      filename: 'application-%DATE%.log',
-      datePattern: 'dddd, MMMM Do YYYY, h:mm:ss a',
-      zippedArchive: true,
-      maxSize: '20m',
-      maxFiles: 3
-    })
-  ]
-});
+// const logger = winston.createLogger({
+//   level: 'info',
+//   format: winston.format.json(),
+//   defaultMeta: { service: 'user-service' },
+//   handleExceptions: true,
+//   transports: [
+//     //
+//     // - Write to all logs with level `info` and below to `combined.log` 
+//     // - Write all logs error (and below) to `error.log`.
+//     //
+//     new winston.transports.File({ filename: './logs/error.log', level: 'error' }),
+//     new winston.transports.File({ filename: './logs/combined.log' }),
+//     new winston.transports.Console(),
+//     new winston.transports.DailyRotateFile({
+//       dirname:'./logs',
+//       frequency:'1m',
+//       filename: 'application-%DATE%.log',
+//       datePattern: 'dddd, MMMM Do YYYY, h:mm:ss a',
+//       zippedArchive: true,
+//       maxSize: '20m',
+//       maxFiles: 3
+//     })
+//   ]
+// });
 
-logger.info('hitting the app')
-module.exports=logger;
+// logger.info('hitting the app')
+// module.exports=logger;

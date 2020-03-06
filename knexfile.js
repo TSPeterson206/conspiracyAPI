@@ -1,6 +1,6 @@
 'use strict'
 const path = require('path')
-const DB_NAME = 'techtutor'
+const DB_NAME = 'conspiracygenerator'
 
 module.exports = {
   development: {

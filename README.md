@@ -1,1 +1,1 @@
-# techTutor-backend
+# Conspiracy Generator API

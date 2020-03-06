@@ -35,25 +35,6 @@ function signup (username, password, profilepic, location) {
     })
 }
 
-function getAllUsers () {
-  return knex('users')
-    .returning('*')
-}
-
-function editOneUser (userId, body) {
-  return knex('users')
-    .update({
-      username:body.username,
-      password:body.password,
-      profilepic: body.profilepic,
-      location:body.location,
-    })
-    .where({
-      id: userId
-    })
-    .returning('*')
-}
-
 function deleteUser (userId) {
   return knex('users')
   .where({
@@ -66,7 +47,5 @@ function deleteUser (userId) {
 module.exports = {
   signup,
   getOneUser,
-  getAllUsers,
-  editOneUser,
   deleteUser
 }

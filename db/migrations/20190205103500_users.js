@@ -3,8 +3,6 @@ exports.up = function (knex, Promise) {
     table.increments()
     table.string('username').notNullable().defaultsTo('')
     table.string('password').notNullable().defaultsTo('')
-    table.string('profilepic').notNullable().defaultsTo('')
-    table.integer('location').notNullable().references('locations.id').onDelete('CASCADE')
     table.timestamps(true, true)
   })
 }
