@@ -7,25 +7,28 @@ function getAllNouns () {
 
 function getStockNouns () {
   return knex('nouns')
+  .where({
+    'nouns.user_id':1
+  })
     .then(result => result)
 }
 
-function getAllOwnNouns(nounId) {
-  console.log('hitting getAllOwnNouns model', nounId);
+function getAllOwnNouns(user_id) {
+  console.log('hitting getAllOwnNouns model', user_id);
 
   return knex('nouns')
     .where({
-      'nouns.user_id': nounId
+      'nouns.user_id': user_id
     })
     .returning('*')
     .then(result => result)
 }
 
-function getAllUserNouns(userId) {
+function getAllUserNouns() {
   console.log('hitting getAlluserNouns model');
   return knex('nouns')
-    .where({
-      'nouns.user_id': userId
+    .whereNot({
+      'nouns.user_id':1
     })
     .returning('*')
     .then(result => result)

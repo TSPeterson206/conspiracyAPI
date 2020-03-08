@@ -17,6 +17,7 @@ function getStockNouns(req, res, next) {
 }
 
 function getAllOwnNouns(req, res, next) {
+  console.log('hitting getallnouns controller', req.params)
   model.getAllOwnNouns(req.params.user_id)
     .then((result) => {
       res.status(200).send(result)

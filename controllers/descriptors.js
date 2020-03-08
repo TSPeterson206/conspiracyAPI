@@ -17,7 +17,7 @@ function getStockDescriptors(req, res, next) {
 }
 
 function getAllOwnDescriptors(req, res, next) {
-  model.getAllOwnDescriptors()
+  model.getAllOwnDescriptors(req.params.user_id)
     .then((result) => {
       res.status(200).send(result)
     })
@@ -42,11 +42,11 @@ function deleteDescriptor(req, res, next) {
 
 function addDescriptor(req, res, next) {
   let {
-    userId,
+    user_id,
     content
   } = req.body
 
-  return model.addNoun(req.body)
+  return model.addDescriptor(req.body)
     .then((result) => {
       if (!result) {
         return next({
@@ -55,7 +55,7 @@ function addDescriptor(req, res, next) {
         })
       }
       res.status(201).send({
-        userId,
+        user_id,
         content
       })
     })

@@ -10,28 +10,28 @@ function getStockDescriptors () {
     .then(result => result)
 }
 
-function getAllOwnDescriptors(nounId) {
+function getAllOwnDescriptors(user_id) {
   return knex('descriptors')
     .where({
-      'descriptors.id': nounId
+      'descriptors.user_id': user_id
     })
     .returning('*')
     .then(result => result)
 }
 
-function getAllUserDescriptors(nounId) {
+function getAllUserDescriptors(descriptorId) {
   return knex('descriptors')
     .where({
-      'descriptors.id': nounId
+      'descriptors.id': descriptorId
     })
     .returning('*')
     .then(result => result)
 }
 
-function deleteDescriptor (nounId) {
+function deleteDescriptor (descriptorId) {
   return knex('descriptors')
     .where({
-      'descriptors.id': nounId
+      'descriptors.id': descriptorId
     })
     .del()
     .returning('*')
@@ -41,7 +41,7 @@ function deleteDescriptor (nounId) {
 function addDescriptor (body) {
   return knex('descriptors')
     .insert({
-      userId: body.userId,
+      user_id: body.user_id,
       content: body.content
     })
     .returning('*')
