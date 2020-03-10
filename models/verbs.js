@@ -7,31 +7,34 @@ function getAllVerbs () {
 
 function getStockVerbs () {
   return knex('verbs')
+  .where({
+    'verbs.user_id':1
+  })
     .then(result => result)
 }
 
-function getAllOwnVerbs(nounId) {
+function getAllOwnVerbs(user_id) {
   return knex('verbs')
     .where({
-      'verbs.id': nounId
+      'verbs.user_id': user_id
     })
     .returning('*')
     .then(result => result)
 }
 
-function getAllUserVerbs(nounId) {
+function getAllUserVerbs(user_id) {
   return knex('verbs')
-    .where({
-      'verbs.id': nounId
+    .whereNot({
+      'verbs.user_id': user_id
     })
     .returning('*')
     .then(result => result)
 }
 
-function deleteNoun (nounId) {
+function deleteNoun (verb_Id) {
   return knex('verbs')
     .where({
-      'verbs.id': nounId
+      'verbs.id': verb_Id
     })
     .del()
     .returning('*')
@@ -41,7 +44,7 @@ function deleteNoun (nounId) {
 function addNoun (body) {
   return knex('verbs')
     .insert({
-      userId: body.userId,
+      user_id: body.user_id,
       content: body.content
     })
     .returning('*')

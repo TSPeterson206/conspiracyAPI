@@ -17,7 +17,7 @@ function getStockVerbs(req, res, next) {
 }
 
 function getAllOwnVerbs(req, res, next) {
-  model.getAllOwnVerbs()
+  model.getAllOwnVerbs(req.params.user_id)
     .then((result) => {
       res.status(200).send(result)
     })

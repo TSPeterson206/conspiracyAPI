@@ -7,6 +7,9 @@ function getAllDescriptors () {
 
 function getStockDescriptors () {
   return knex('descriptors')
+  .where({
+    'descriptors.user_id':1
+  })
     .then(result => result)
 }
 
@@ -19,19 +22,19 @@ function getAllOwnDescriptors(user_id) {
     .then(result => result)
 }
 
-function getAllUserDescriptors(descriptorId) {
+function getAllUserDescriptors() {
   return knex('descriptors')
-    .where({
-      'descriptors.id': descriptorId
+    .whereNot({
+      'descriptors.user_id':1
     })
     .returning('*')
     .then(result => result)
 }
 
-function deleteDescriptor (descriptorId) {
+function deleteDescriptor (descriptor_id) {
   return knex('descriptors')
     .where({
-      'descriptors.id': descriptorId
+      'descriptors.id': descriptor_id
     })
     .del()
     .returning('*')
