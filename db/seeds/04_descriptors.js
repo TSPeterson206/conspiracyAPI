@@ -40,17 +40,17 @@ exports.seed = function (knex, Promise) {
 {id:38,user_id:1,content:'and it was probably inevitable'},
 {id:39,user_id:1,content:'and it was the smallest offense committed'},
 {id:40,user_id:1,content:'and that should spook you to the core'},
-{id:41,user_id:1,content:'and I wish I didn\'t know the truth'},
-{id:42,user_id:1,content:'and you do not know the half of it'},
-{id:43,user_id:1,content:'and now your eyes are open'},
-{id:44,user_id:1,content:'and history will repeat itself'},
-{id:45,user_id:1,content:'and they know that time is a flat circle'},
-{id:46,user_id:1,content:'and it was not even considered a big deal'},
-{id:47,user_id:1,content:'and it occurred multiple times'},
-{id:48,user_id:1,content:'and the truth is still buried'},
-{id:49,user_id:1,content:'and the public has no clue'},
-{id:50,user_id:1,content:'and I wish I had thought of it first'},
-{id:51,user_id:1,content:'and it will happen again'}
+{id:41,user_id:2,content:'and I wish I didn\'t know the truth'},
+{id:42,user_id:2,content:'and you do not know the half of it'},
+{id:43,user_id:2,content:'and now your eyes are open'},
+{id:44,user_id:2,content:'and history will repeat itself'},
+{id:45,user_id:2,content:'and they know that time is a flat circle'},
+{id:46,user_id:3,content:'and it was not even considered a big deal'},
+{id:47,user_id:3,content:'and it occurred multiple times'},
+{id:48,user_id:3,content:'and the truth is still buried'},
+{id:49,user_id:3,content:'and the public has no clue'},
+{id:50,user_id:3,content:'and I wish I had thought of it first'},
+{id:51,user_id:3,content:'and it will happen again'}
   ])
     .then(() => {
       return knex.raw("SELECT setval('descriptors_id_seq', (SELECT MAX(id) FROM descriptors));")
