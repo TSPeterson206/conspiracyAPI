@@ -7,7 +7,7 @@ const descriptorsCtrl = require('../controllers/descriptors')
 router.get('/', descriptorsCtrl.getAllDescriptors)
 router.get('/stock', descriptorsCtrl.getStockDescriptors)
 router.get('/:user_id', descriptorsCtrl.getAllOwnDescriptors)
-router.get('/users', descriptorsCtrl.getAllUserDescriptors)
+router.get('/1/users', descriptorsCtrl.getAllUserDescriptors)
 router.delete('/:descriptor_id', descriptorsCtrl.deleteDescriptor)
 router.post('/', descriptorsCtrl.addDescriptor)
 
