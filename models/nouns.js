@@ -17,7 +17,7 @@ function getAllOwnNouns(user_id) {
   console.log('hitting getAllOwnNouns model', user_id);
 
   return knex('nouns')
-  .select('content')
+  //.select('content')
     .where({
       'nouns.user_id': user_id
     })

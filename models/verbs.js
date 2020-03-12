@@ -22,10 +22,10 @@ function getAllOwnVerbs(user_id) {
     .then(result => result)
 }
 
-function getAllUserVerbs(user_id) {
+function getAllUserVerbs() {
   return knex('verbs')
     .whereNot({
-      'verbs.user_id': user_id
+      'verbs.user_id':1
     })
     .returning('*')
     .then(result => result)
