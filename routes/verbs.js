@@ -9,6 +9,6 @@ router.get('/stock', verbsCtrl.getStockVerbs)
 router.get('/:user_id', verbsCtrl.getAllOwnVerbs)
 router.get('/1/users', verbsCtrl.getAllUserVerbs)
 router.delete('/:verb_id', verbsCtrl.deleteVerb)
-router.post('/', verbsCtrl.addVerb)
+router.post('/:user_id', verbsCtrl.addVerb)
 
 module.exports = router

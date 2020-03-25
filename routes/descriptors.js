@@ -9,6 +9,6 @@ router.get('/stock', descriptorsCtrl.getStockDescriptors)
 router.get('/:user_id', descriptorsCtrl.getAllOwnDescriptors)
 router.get('/1/users', descriptorsCtrl.getAllUserDescriptors)
 router.delete('/:descriptor_id', descriptorsCtrl.deleteDescriptor)
-router.post('/', descriptorsCtrl.addDescriptor)
+router.post('/:user_id', descriptorsCtrl.addDescriptor)
 
 module.exports = router

@@ -15,7 +15,6 @@ function getStockNouns () {
 
 function getAllOwnNouns(user_id) {
   console.log('hitting getAllOwnNouns model', user_id);
-
   return knex('nouns')
   //.select('content')
     .where({
@@ -25,12 +24,13 @@ function getAllOwnNouns(user_id) {
     .then(result => result)
 }
 
-function getAllUserNouns() {
-  console.log('hitting getAlluserNouns model');
+function getAllUserNouns(user_id) {
+  console.log('hitting getAlluserNouns model', user_id);
   return knex('nouns')
     .whereNot({
       'nouns.user_id':1
     })
+    .andWhereNot({'nouns.user_id':user_id})
     .returning('*')
     .then(result => result)
 }
