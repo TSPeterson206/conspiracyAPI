@@ -25,7 +25,7 @@ function getAllOwnDescriptors(req, res, next) {
 }
 
 function getAllUserDescriptors(req, res, next) {
-  model.getAllUserDescriptors()
+  model.getAllUserDescriptors(req.params.user_id)
     .then((result) => {
       res.status(200).send(result)
     })
