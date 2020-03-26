@@ -22,11 +22,12 @@ function getAllOwnDescriptors(user_id) {
     .then(result => result)
 }
 
-function getAllUserDescriptors() {
+function getAllUserDescriptors(user_id) {
   return knex('descriptors')
     .whereNot({
       'descriptors.user_id':1
     })
+    .andWhereNot({'descriptors.user_id':user_id})
     .returning('*')
     .then(result => result)
 }

@@ -25,7 +25,7 @@ function getAllOwnVerbs(req, res, next) {
 }
 
 function getAllUserVerbs(req, res, next) {
-  model.getAllUserVerbs()
+  model.getAllUserVerbs(req.params.user_id)
     .then((result) => {
       res.status(200).send(result)
     })

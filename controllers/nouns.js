@@ -27,7 +27,7 @@ function getAllOwnNouns(req, res, next) {
 
 function getAllUserNouns(req, res, next) {
   console.log('hitting getallusernouns controller');
-  model.getAllUserNouns()
+  model.getAllUserNouns(req.params.user_id)
     .then((result) => {
       res.status(200).send(result)
     })
