@@ -32,10 +32,10 @@ function getAllUserVerbs(user_id) {
     .then(result => result)
 }
 
-function deleteNoun (verb_Id) {
+function deleteNoun (verbId) {
   return knex('verbs')
     .where({
-      'verbs.id': verb_Id
+      'verbs.id': verbId
     })
     .del()
     .returning('*')

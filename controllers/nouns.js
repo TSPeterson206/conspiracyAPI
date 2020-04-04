@@ -35,6 +35,7 @@ function getAllUserNouns(req, res, next) {
 }
 
 function deleteNoun(req, res, next) {
+  console.log('hitting deletenoun controller')
   return model.deleteNoun(req.params.nounId)
     .then((result) =>
       res.status(200).send(result)
