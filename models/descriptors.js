@@ -32,10 +32,11 @@ function getAllUserDescriptors(user_id) {
     .then(result => result)
 }
 
-function deleteDescriptor (descriptor_id) {
+function deleteDescriptor (descriptorId) {
+  console.log('hitting deletedescriptor model', descriptorId)
   return knex('descriptors')
     .where({
-      'descriptors.id': descriptor_id
+      'descriptors.id': descriptorId
     })
     .del()
     .returning('*')

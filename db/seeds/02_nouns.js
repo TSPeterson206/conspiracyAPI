@@ -120,7 +120,7 @@ exports.seed = function (knex, Promise) {
 { id: 118, user_id:1,content:'James Corden'},
 { id: 119, user_id:1,content:'Anna Paquin'},
 { id: 120, user_id:1,content:'George Romero'},
-{ id: 121, user_id:2,content:'The case of The Fast and the Furious'},
+{ id: 121, user_id:2,content:'The cast of The Fast and the Furious'},
 { id: 122, user_id:2,content:'Paul Walker'},
 { id: 123, user_id:2,content:'Steve Wozniak'},
 { id: 124, user_id:3,content:'Jim Parsons'},

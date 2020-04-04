@@ -33,6 +33,7 @@ function getAllUserVerbs(req, res, next) {
 }
 
 function deleteVerb(req, res, next) {
+  console.log('hitting deleteverb controller', req.params.verbId)
   return model.deleteNoun(req.params.verbId)
     .then((result) =>
       res.status(200).send(result)

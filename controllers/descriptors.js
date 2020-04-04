@@ -33,6 +33,7 @@ function getAllUserDescriptors(req, res, next) {
 }
 
 function deleteDescriptor(req, res, next) {
+  console.log('hitting deletedescriptor controller',req.params.descriptorId);
   return model.deleteDescriptor(req.params.descriptorId)
     .then((result) =>
       res.status(200).send(result)
