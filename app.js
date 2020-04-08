@@ -1,15 +1,28 @@
 const express = require('express')
+const cors = require('cors')
+const bodyParser = require('body-parser')
+const bearerToken = require('express-bearer-token');
 const app = express()
 const morgan = require('morgan')
-const bodyParser = require('body-parser')
-const cors = require('cors')
+const profile = require('./profile');
+
+
 const port = process.env.PORT || 8000
 
+// const jwt = require('express-jwt');
+// const jwks = require('jwks-rsa');
 // if (process.env.NODE_ENV !== 'production') require('dotenv').load()
 
 app.use(cors())
+
+
+
+
 app.use(morgan('dev'))
-app.use(bodyParser.json({ limit: '5mb' }))
+app.use(bodyParser.json({ limit: '10mb' }))
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/', profile);
 
 app.use('/users', require('./routes/users'))
 app.use('/nouns', require('./routes/nouns'))
@@ -36,33 +49,20 @@ const listener = () => console.log(`Listening on ${port}`)
 app.listen(port, listener)
 
 
-// const winston = require('winston');
-// require('winston-daily-rotate-file')
 
-// const logger = winston.createLogger({
-//   level: 'info',
-//   format: winston.format.json(),
-//   defaultMeta: { service: 'user-service' },
-//   handleExceptions: true,
-//   transports: [
-//     //
-//     // - Write to all logs with level `info` and below to `combined.log` 
-//     // - Write all logs error (and below) to `error.log`.
-//     //
-//     new winston.transports.File({ filename: './logs/error.log', level: 'error' }),
-//     new winston.transports.File({ filename: './logs/combined.log' }),
-//     new winston.transports.Console(),
-//     new winston.transports.DailyRotateFile({
-//       dirname:'./logs',
-//       frequency:'1m',
-//       filename: 'application-%DATE%.log',
-//       datePattern: 'dddd, MMMM Do YYYY, h:mm:ss a',
-//       zippedArchive: true,
-//       maxSize: '20m',
-//       maxFiles: 3
-//     })
-//   ]
+///////////////////////////////////
+// const authCheck = jwt({
+//   secret: jwks.expressJwtSecret({
+//         cache: true,
+//         rateLimit: true,
+//         jwksRequestsPerMinute: 5,
+//         jwksUri: "https://{YOUR-AUTH0-DOMAIN}.auth0.com/.well-known/jwks.json"
+//     }),
+//     // This is the identifier we set when we created the API
+//     audience: '{YOUR-API-AUDIENCE-ATTRIBUTE}',
+//     issuer: "{YOUR-AUTH0-DOMAIN}", // e.g., https://you.auth0.com/
+//     algorithms: ['RS256']
 // });
+//////////////////////////////////
 
-// logger.info('hitting the app')
-// module.exports=logger;
+// module.exports=authCheck;
