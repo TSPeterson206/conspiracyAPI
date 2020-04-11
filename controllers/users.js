@@ -6,17 +6,19 @@ const logger = require('../app')
 //////
 
 function signup (req, res, next) {
+  console.log('hitting API signup controller')
   const {
     username,
+    email,
     password
   } = req.body
-  if (!username && !password) {
+  if (!username && !email && !password) {
     return next({
       status: 400,
       message: 'Username and Password required for creating an account'
     })
   }
-  return usersModel.signup(username, password)
+  return usersModel.signup(username, email, password)
     .then(([data]) => {
       if (!data) {
         return next({
@@ -27,6 +29,19 @@ function signup (req, res, next) {
       next()
     })
     .catch(next)
+}
+
+function getAllUsers(req, res, next) {
+  return usersModel.getAllUsers()
+    .then((result) => {
+      if (!result) {
+        return next({
+          status: 404,
+          message: 'account not found'
+        })
+      }
+      res.status(200).send(result)
+    })
 }
 
 function getOneUser (req, res, next) {
@@ -58,5 +73,6 @@ function deleteUser (req, res, next) {
 module.exports = {
   signup,
   getOneUser,
+  getAllUsers,
   deleteUser
 }

@@ -42,6 +42,7 @@ router.post('/register', function(req, res) {
 
 
 router.post('/login', function(req, res) {
+  console.log('hitting login')
   db.get("SELECT id, name, email, password FROM users " 
         + "WHERE email=?", req.body.email, function (err, user) {
     if (err) return res.status(500).send({status: 'Server error', err:err});

@@ -6,6 +6,8 @@ const app = express()
 const morgan = require('morgan')
 const profile = require('./profile');
 
+require("dotenv").config();
+
 
 const port = process.env.PORT || 8000
 
@@ -24,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', profile);
 
+app.use('/accounts', require('./routes/users'))
 app.use('/users', require('./routes/users'))
 app.use('/nouns', require('./routes/nouns'))
 app.use('/verbs', require('./routes/verbs'))
